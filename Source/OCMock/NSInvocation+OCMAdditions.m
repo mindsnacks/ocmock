@@ -32,8 +32,7 @@
  		{
  			SEL s = (SEL)0;
  			[self getArgument:&s atIndex:argIndex];
- 			id value = NSStringFromSelector(s);
- 			return value;
+            return [NSValue valueWithBytes:&s objCType:":"];
  		}
 		case 'i': 
 		{
@@ -284,7 +283,7 @@
 	return [NSString stringWithFormat:@"%qu", longLongValue];
 }
 
-- (NSString *)doubleDescriptionAtIndex:(int)anInt;
+- (NSString *)doubleDescriptionAtIndex:(int)anInt
 {
 	double doubleValue;
 	
@@ -300,7 +299,7 @@
 	return [NSString stringWithFormat:@"%f", floatValue];
 }
 
-- (NSString *)structDescriptionAtIndex:(int)anInt;
+- (NSString *)structDescriptionAtIndex:(int)anInt
 {
 	void *buffer;
 	
